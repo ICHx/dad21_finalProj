@@ -27,29 +27,31 @@ Create table if not exists Course (
     CourseName TEXT,
     Quota INT,
     Remarks TEXT,
-    
     FOREIGN KEY (DeptID) REFERENCES Dept(DeptID),
     PRIMARY KEY (DeptID, CourseID)
 );
 -- ok
-
--- not ok
+drop table if exists Teach;
 create table Teach(
-TeacherID varchar(20) not null,
-DeptID varchar(5) not null,
-CourseID INT not null,
-
-FOREIGN KEY (TeacherID) REFERENCES Account(NetID), -- ok
-FOREIGN KEY (DeptID,CourseID) REFERENCES Course(DeptID,CourseID), -- ok
-PRIMARY KEY (DeptID, CourseID)
-); --ok
-
+    TeacherID varchar(20) not null,
+    DeptID varchar(5) not null,
+    CourseID INT not null,
+    FOREIGN KEY (TeacherID) REFERENCES Account(NetID),
+    -- ok
+    FOREIGN KEY (DeptID, CourseID) REFERENCES Course(DeptID, CourseID),
+    -- ok
+    PRIMARY KEY (DeptID, CourseID)
+);
+-- ok
+drop table if exists Enroll;
 create table Enroll(
-StudentID varchar(20) not null,
-DeptID varchar(5) not null,
-CourseID INT not null,
-
-FOREIGN KEY (StudentID) REFERENCES Account(NetID), -- ok
-FOREIGN KEY (DeptID,CourseID) REFERENCES Course(DeptID,CourseID), -- ok
-PRIMARY KEY (DeptID, CourseID)
-); --ok
+    StudentID varchar(20) not null,
+    DeptID varchar(5) not null,
+    CourseID INT not null,
+    FOREIGN KEY (StudentID) REFERENCES Account(NetID),
+    -- ok
+    FOREIGN KEY (DeptID, CourseID) REFERENCES Course(DeptID, CourseID),
+    -- ok
+    PRIMARY KEY (DeptID, CourseID)
+);
+-- ok
