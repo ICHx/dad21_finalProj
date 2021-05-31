@@ -1,3 +1,5 @@
+use college;
+SET FOREIGN_KEY_CHECKS = 0;
 create table if not exists Dept (
     DeptID varchar(5) primary key,
     DeptName text not null,
@@ -5,11 +7,14 @@ create table if not exists Dept (
     DeptPhone int not null
 );
 -- ok
+drop table if exists Account;
 Create table if not exists Account (
     NetID varchar(20) primary key,
-    FirstName TEXT,
-    LastName TEXT,
-    DeptID varchar(5),
+    FirstName TEXT NOT NULL,
+    LastName TEXT NOT NULL,
+    DeptID varchar(5) NOT NULL,
+    Gender VARCHAR(1) NOT NULL,
+    Phone int NULL,
     FOREIGN KEY (DeptID) REFERENCES Dept(DeptID)
 );
 -- ok
@@ -21,12 +26,12 @@ create table DeptHead(
     FOREIGN KEY (ForDeptID) REFERENCES Dept(DeptID)
 );
 -- ok
-Create table if not exists Course (
+drop table if exists Course;
+Create table Course (
     DeptID varchar(5),
-    CourseID INT,
-    CourseName TEXT,
-    Quota INT,
-    Remarks TEXT,
+    CourseID INT NOT NULL,
+    CourseName TEXT NOT NULL,
+    Remarks TEXT NULL,
     FOREIGN KEY (DeptID) REFERENCES Dept(DeptID),
     PRIMARY KEY (DeptID, CourseID)
 );
@@ -37,10 +42,8 @@ create table Teach(
     DeptID varchar(5) not null,
     CourseID INT not null,
     FOREIGN KEY (TeacherID) REFERENCES Account(NetID),
-    -- ok
     FOREIGN KEY (DeptID, CourseID) REFERENCES Course(DeptID, CourseID),
-    -- ok
-    PRIMARY KEY (DeptID, CourseID)
+    PRIMARY KEY (DeptID, CourseID) -- one course entry one teacher
 );
 -- ok
 drop table if exists Enroll;
@@ -49,9 +52,7 @@ create table Enroll(
     DeptID varchar(5) not null,
     CourseID INT not null,
     FOREIGN KEY (StudentID) REFERENCES Account(NetID),
-    -- ok
     FOREIGN KEY (DeptID, CourseID) REFERENCES Course(DeptID, CourseID),
-    -- ok
-    PRIMARY KEY (DeptID, CourseID)
+    PRIMARY KEY (StudentID, DeptID, CourseID) -- one student and one course = one entry, many entries allowed
 );
 -- ok

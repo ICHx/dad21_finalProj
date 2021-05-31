@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+	
+<hibernate-configuration> 
+
+    <session-factory> 
+
+    <!-- 顯示實際操作資料庫時的SQL --> 
+    <property name="show_sql">true</property> 
+    <!-- 將顯示的SQL排版，方便觀看 -->
+    <property name="format_sql">true</property>
+    <!-- SQL方言，這邊設定的是MySQL --> 
+    <property name="dialect">org.hibernate.dialect.MariaDBDialect</property> 
+    <!-- JDBC驅動程式 --> 
+    <property name="connection.driver_class">org.mariadb.jdbc.Driver</property> 
+    <!-- JDBC URL --> 
+    <property name="connection.url">jdbc:mysql://192.168.0.202/college</property> 
+    <!-- 資料庫使用者 --> 
+    <property name="connection.username">phone</property> 
+    <!-- 資料庫密碼 --> 
+    <property name="connection.password">sql12345</property> 
+
+    <!-- 以下設置物件與資料庫表格映射文件 --> 
+
+    <mapping class="studentDatabase.Account"/>
+    
+    </session-factory> 
+
+</hibernate-configuration>
+
+<!-- https://openhome.cc/Gossip/HibernateGossip/setUpHibernate.html -->
+<!-- https://openhome.cc/Gossip/CodeData/JavaTutorial/HibernateJPA.html -->

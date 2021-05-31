@@ -24,12 +24,13 @@ dependencies {
     implementation "com.atlassian.commonmark:commonmark:0.14.0"
     implementation 'io.javalin:javalin:3.13.6'
     implementation "org.slf4j:slf4j-simple:1.7.30"
-
-
-
+    
+    implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
+    // implementation 'org.hibernate:hibernate-core:5.4.32.Final'
+    implementation group: 'org.sql2o', name: 'sql2o', version: '1.6.0'
 }
 
 application {
     // Define the main class for the application.
-    mainClass = 'dad21_finalProject_student_database.App'
+    mainClass = 'studentDatabase.App'
 }

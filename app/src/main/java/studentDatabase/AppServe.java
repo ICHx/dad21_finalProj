@@ -1,4 +1,4 @@
-package dad21_finalProject_student_database;
+package studentDatabase;
 
 import io.javalin.http.Context;
 
