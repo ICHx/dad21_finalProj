@@ -8,8 +8,8 @@ public class AppServe {
         ctx.render("/index.html");
     }
 
-    public static Object md(Context ctx) {
-        ctx.render("/mdtest.md");
-        return null;
-    }
+    // public static Object md(Context ctx) {
+    //     ctx.render("/mdtest.md");
+    //     return null;
+    // }
 }
