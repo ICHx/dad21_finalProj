@@ -2,10 +2,10 @@ package studentDatabase.Pojo;
 
 public class Course {
 private String deptid;
-private String courseid;
+private int courseid;
 private String coursename;
 private String remarks;
-public Course(String deptid, String courseid, String coursename, String remarks) {
+public Course(String deptid, int courseid, String coursename, String remarks) {
     this.deptid = deptid;
     this.courseid = courseid;
     this.coursename = coursename;
@@ -17,10 +17,10 @@ public String getDeptid() {
 public void setDeptid(String deptid) {
     this.deptid = deptid;
 }
-public String getCourseid() {
+public int getCourseid() {
     return courseid;
 }
-public void setCourseid(String courseid) {
+public void setCourseid(int courseid) {
     this.courseid = courseid;
 }
 public String getCoursename() {

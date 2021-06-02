@@ -5,15 +5,34 @@ package studentDatabase;
 
 import org.junit.Test;
 
-import studentDatabase.Pojo.Account;
-import studentDatabase.Pojo.Course;
+import studentDatabase.Pojo.*;
 
 public class AppTest {
     
-    @Test public void testHibernate(){
-        var c = new Course("ISE", "101", "Introduction to engineering", "nothing given");
-        var ac = new Account("15d","TaiMan","Chan","ISE","M","+852-21090000");
-        App.testDB(c);
-        App.testDB(ac);
+    @Test public void testSQL(){
+        var dept = new Dept("ISE", "Industrial and Sys Eng", "Room 208", 25567111);
+        var course = new Course("ISE", 101, "Introduction to engineering", "nothing given");
+        var ac = new Account("122235d","TaiMan","Chan","ISE","M","+852-21090000");
+        
+        var ach = new Account("130622t","Ben","Cheung","ISE","M","+852-98993310");
+        
+        var dh = new DeptHead("130622t","ISE");
+        
+        var teach = new Teach("130622t","ISE",101);
+        var enroll = new Enroll("122235d","ISE",101);
+        
+        
+        DBUtil.insert(dept);
+        DBUtil.insert(course);
+        DBUtil.insert(ac);
+        
+//        add teacher
+        DBUtil.insert(ach);
+        DBUtil.insert(dh);
+
+        
+//        enroll, teach
+        DBUtil.insert(teach);
+        DBUtil.insert(enroll);
     }
 }
