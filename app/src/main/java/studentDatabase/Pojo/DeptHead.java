@@ -1,6 +1,8 @@
 package studentDatabase.Pojo;
 
+import lombok.Data;
 
+@Data
 public class DeptHead {
 
   private String headid;
@@ -10,21 +12,7 @@ public class DeptHead {
     this.headid = headid;
     this.fordeptid = fordeptid;
   }
-  
-  public String getHeadid() {
-    return headid;
-  }
+  public DeptHead(){}
 
-  public void setHeadid(String headid) {
-    this.headid = headid;
-  }
-
-  public String getFordeptid() {
-    return fordeptid;
-  }
-
-  public void setFordeptid(String fordeptid) {
-    this.fordeptid = fordeptid;
-  }
 
 }

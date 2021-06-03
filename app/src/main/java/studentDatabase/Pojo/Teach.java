@@ -1,5 +1,8 @@
 package studentDatabase.Pojo;
 
+import lombok.Data;
+
+@Data
 public class Teach {
 
   private String teacherid;
@@ -11,31 +14,10 @@ public class Teach {
     this.deptid = deptid;
     this.courseid = courseid;
   }
+
+  public Teach() {
+  }
   
-  public String getTeacherid() {
-    return teacherid;
-  }
 
-  public void setTeacherid(String teacherid) {
-    this.teacherid = teacherid;
-  }
-
-
-  public String getDeptid() {
-    return deptid;
-  }
-
-  public void setDeptid(String deptid) {
-    this.deptid = deptid;
-  }
-
-
-  public long getCourseid() {
-    return courseid;
-  }
-
-  public void setCourseid(long courseid) {
-    this.courseid = courseid;
-  }
 
 }

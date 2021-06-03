@@ -49,7 +49,7 @@ public class Account {
     }
 
     public void setDeptid(String deptid) {
-        this.deptid = deptid;
+        this.deptid = deptid.toUpperCase();
     }
 
     public String getGender() {
@@ -57,7 +57,7 @@ public class Account {
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        this.gender = gender.toUpperCase();
     }
 
     public String getPhone() {

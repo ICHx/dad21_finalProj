@@ -27,8 +27,8 @@ Create table if not exists Account
 drop table if exists DeptHead;
 create table DeptHead
 (
-    HeadID    varchar(20) primary key,
-    ForDeptID varchar(5),
+    ForDeptID varchar(5) primary key,
+    HeadID    varchar(20) null,
     FOREIGN KEY (HeadID) REFERENCES Account (NetID),
     FOREIGN KEY (ForDeptID) REFERENCES Dept (DeptID)
 );

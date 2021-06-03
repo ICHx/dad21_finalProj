@@ -1,5 +1,8 @@
 package studentDatabase.Pojo;
 
+import lombok.Data;
+
+@Data
 public class Course {
 private String deptid;
 private int courseid;
@@ -11,28 +14,19 @@ public Course(String deptid, int courseid, String coursename, String remarks) {
     this.coursename = coursename;
     this.remarks = remarks;
 }
+
+public Course(){}
 public String getDeptid() {
     return deptid;
 }
-public void setDeptid(String deptid) {
-    this.deptid = deptid;
+public void setDeptid(String deptid) throws Exception {
+    if (deptid.isBlank()){
+        throw new Exception("Empty bean id.");
+    }
+    this.deptid = deptid.toUpperCase();
 }
-public int getCourseid() {
-    return courseid;
-}
+
 public void setCourseid(int courseid) {
     this.courseid = courseid;
-}
-public String getCoursename() {
-    return coursename;
-}
-public void setCoursename(String coursename) {
-    this.coursename = coursename;
-}
-public String getRemarks() {
-    return remarks;
-}
-public void setRemarks(String remarks) {
-    this.remarks = remarks;
 }
 }
