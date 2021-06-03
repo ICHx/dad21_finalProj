@@ -1,17 +1,16 @@
 <html>
 
 <head>
-    <title>Form</title>
+    <title>Assign Dept Head</title>
 
 </head>
 
 <body>
-    <p>Dept Form.</p>
+    <p>Assign DeptHead.</p>
     
 
     <div id="deptform">
         <p>{{message}}</p>
-        <Form action="/dept/add">
             <ul>
                 <div v-for="(key1) in fields">
                     <label>{{key1}}</label>
@@ -20,13 +19,11 @@
                 
             </ul>
             
-            <button type="submit" >Done</button>
             <button type="button" onclick="vm.submitBean()">Done(API)</button>
-        </Form>
     </div>
     
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="dept.js"></script>
+    <script src="depthead.js"></script>
 </body>
 
 </html>

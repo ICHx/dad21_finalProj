@@ -2,10 +2,10 @@ package studentDatabase.API;
 
 import io.javalin.http.Context;
 import studentDatabase.DBUtil;
-import studentDatabase.Pojo.Dept;
+import studentDatabase.Pojo.*;
 
 /**
- * This class add/update row to database
+ * *This class add/update row to database
  */
 public class Put {
 
@@ -22,6 +22,70 @@ public class Put {
             ctx.result(result);
         }
     }
+    
+    public static void depthead(Context ctx) {
+        System.out.println(ctx.body());
+        var dpt = ctx.bodyAsClass(DeptHead.class);
+        String result = "Success";
+        try {
+            DBUtil.insert(dpt);
+        } catch (Exception e) {
+            result = e.getMessage();
+        } finally {
+            ctx.result(result);
+        }
+    }
 
+    public static void course(Context ctx) {
+        System.out.println(ctx.body());
+        var dpt = ctx.bodyAsClass(Course.class);
+        String result = "Success";
+        try {
+            DBUtil.insert(dpt);
+        } catch (Exception e) {
+            result = e.getMessage();
+        } finally {
+            ctx.result(result);
+        }
+    }
+    
+    public static void account(Context ctx) {
+        System.out.println(ctx.body());
+        var dpt = ctx.bodyAsClass(Account.class);
+        String result = "Success";
+        try {
+            DBUtil.insert(dpt);
+        } catch (Exception e) {
+            result = e.getMessage();
+        } finally {
+            ctx.result(result);
+        }
+    }
+    
+    public static void enroll(Context ctx) {
+        System.out.println(ctx.body());
+        var dpt = ctx.bodyAsClass(Enroll.class);
+        String result = "Success";
+        try {
+            DBUtil.insert(dpt);
+        } catch (Exception e) {
+            result = e.getMessage();
+        } finally {
+            ctx.result(result);
+        }
+    }
+    
+    public static void teach(Context ctx) {
+        System.out.println(ctx.body());
+        var dpt = ctx.bodyAsClass(Teach.class);
+        String result = "Success";
+        try {
+            DBUtil.insert(dpt);
+        } catch (Exception e) {
+            result = e.getMessage();
+        } finally {
+            ctx.result(result);
+        }
+    }
 
 }

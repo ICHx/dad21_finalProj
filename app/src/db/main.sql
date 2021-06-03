@@ -28,7 +28,7 @@ drop table if exists DeptHead;
 create table DeptHead
 (
     ForDeptID varchar(5) primary key,
-    HeadID    varchar(20) null,
+    HeadID    varchar(20) null UNIQUE,
     FOREIGN KEY (HeadID) REFERENCES Account (NetID),
     FOREIGN KEY (ForDeptID) REFERENCES Dept (DeptID)
 );

@@ -25,7 +25,7 @@ const formApp = {
             console.log("hello world");
         },
         async submitBean(){
-            const resp = await fetch("/dept/add",{
+            const resp = await fetch("/api/dept/add",{
                 method: 'PUT',
                 cache: 'no-cache',
                 body: JSON.stringify(bean)

@@ -1,12 +1,10 @@
 'use strict'
-class dept {
-    deptid;
-    deptname;
-    deptaddress;
-    deptphone;
+class schema {
+    headid;
+    fordeptid;
 }
 
-const bean = new dept();
+const bean = new schema();
 const fields = Object.keys(bean);
 
 
@@ -25,7 +23,7 @@ const formApp = {
             console.log("hello world");
         },
         async submitBean(){
-            const resp = await fetch("/dept/add",{
+            const resp = await fetch("/api/depthead/add",{
                 method: 'PUT',
                 cache: 'no-cache',
                 body: JSON.stringify(bean)

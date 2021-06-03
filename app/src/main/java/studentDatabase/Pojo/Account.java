@@ -1,7 +1,9 @@
 package studentDatabase.Pojo;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Account {
-    private String netid;
+    @NotNull private String netid;
     private String firstname;
     private String lastname;
     private String deptid;
