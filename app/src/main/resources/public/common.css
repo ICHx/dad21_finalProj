@@ -1,0 +1,24 @@
+html{
+    background-color: darkgray;
+}
+body{
+    width: 50%;
+    min-width: 30em;
+    max-width: 100em;
+    margin: 0 auto;
+}
+#debug {
+    background-color: aquamarine;
+    padding: 1em;
+}
+#deptform {
+    padding: 1em;
+    background-color: aliceblue;
+}
+
+label{
+    display: inline-block;
+    text-align: right;
+    width: 100px;
+    padding: 5px;
+}

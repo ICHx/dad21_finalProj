@@ -2,7 +2,7 @@
 
 <head>
     <title>Create/Edit Account</title>
-
+    <link rel="stylesheet" href="/common.css">
 </head>
 
 <body>
@@ -16,7 +16,9 @@
                 
             </ul>
             
-            <button type="button" onclick="vm.submitBean()">Done(API)</button>
+            <button type="button" onclick="vm.getBean()">Get By ID</button>
+            <button type="button" onclick="vm.delBean()">Del By ID</button>
+            <button type="button" onclick="vm.submitBean()">Create/Update</button>
     </div>
     
     <script src="https://unpkg.com/vue@next"></script>

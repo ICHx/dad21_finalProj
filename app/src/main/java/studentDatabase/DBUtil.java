@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.sql2o.Sql2o;
 
+import lombok.NonNull;
 import studentDatabase.Pojo.Account;
 import studentDatabase.Pojo.Course;
 import studentDatabase.Pojo.Dept;
@@ -37,8 +38,13 @@ public class DBUtil {
             updateBind(d, sql);
 
         } catch (Exception e) {
-            System.out.println("Try update dept");
-            update(d);
+            if (e.getMessage().contains("Duplicate")) {
+                System.out.println("Try update dept record");
+                update(d);
+            } else {
+                e.printStackTrace();
+                throw e;
+            }
         }
     }
 
@@ -56,8 +62,12 @@ public class DBUtil {
         try {
             updateBind(a, sql);
         } catch (Exception e) {
-            System.out.println("Try update dept");
-            update(a);
+            if (e.getMessage().contains("Duplicate")) {
+                System.out.println("Try update account record");
+                update(a);
+            } else {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -78,7 +88,8 @@ public class DBUtil {
         updateBind(t, sql);
     }
 
-    // ! CRUD : Update, for unreplacable entries
+    // ! CRUD : Update,
+    // for unreplacable entries
     public static void update(Dept d) {
         var sql = "update Dept SET\n" + "deptname=:deptname, deptaddress=:deptaddress, deptphone=:deptphone\n"
                 + "WHERE deptid=:deptid";
@@ -89,7 +100,11 @@ public class DBUtil {
         var sql = "update Account SET\n"
                 + "firstname=:firstname, lastname=:lastname, deptid=:deptid, gender=:gender, phone=:phone\n"
                 + "WHERE netid=:netid";
-        updateBind(a, sql);
+        try {
+            updateBind(a, sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // ! Delete
@@ -101,7 +116,7 @@ public class DBUtil {
     }
 
     public static void delete(Course c) {
-        // ! not neccessary to update
+        // ! not neccessary to delete
         var sql1 = "delete from Enroll where deptid=:deptid and courseid=:courseid";
         var sql2 = "delete from Teach where deptid=:deptid and courseid=:courseid";
         var sql3 = "delete from Course where deptid=:deptid and courseid=:courseid";
@@ -111,9 +126,11 @@ public class DBUtil {
     }
 
     public static void delete(Account a) {
+        var sql0 = "delete from DeptHead where headid=:netid";
         var sql1 = "delete from Enroll where studentid=:netid";
         var sql2 = "delete from Teach where teacherid=:netid";
-        var sql3 = "delete from Account where netid=:netid)";
+        var sql3 = "delete from Account where netid=:netid";
+        updateBind(a, sql0);
         updateBind(a, sql1);
         updateBind(a, sql2);
         updateBind(a, sql3);
@@ -136,7 +153,7 @@ public class DBUtil {
 
     // ! CRUD: read / find
 
-    public static Dept findDept(String deptid) {
+    public static Dept findDept(@NonNull String deptid) {
         var sql = "select * from Dept where deptid=:val";
         try (var con = sql2o.open()) {
             var obj = con.createQuery(sql).addParameter("val", deptid).executeAndFetchFirst(Dept.class);
@@ -144,16 +161,16 @@ public class DBUtil {
         }
     }
 
-    public static Account findAccount(String key) {
+    public static Account findAccount(@NonNull String key) {
 
-        var sql = "select * from Dept where netid=:val";
+        var sql = "select * from Account where netid=:val";
         try (var con = sql2o.open()) {
             var obj = con.createQuery(sql).addParameter("val", key).executeAndFetchFirst(Account.class);
             return obj;
         }
     }
 
-    public static DeptHead findDepthead(String key) {
+    public static DeptHead findDepthead(@NonNull String key) {
 
         var sql = "select * from DeptHead where fordeptid=:val or headid=:val";
         try (var con = sql2o.open()) {
@@ -162,7 +179,7 @@ public class DBUtil {
         }
     }
 
-    public static Course findCourse(String deptid, String courseid) {
+    public static Course findCourse(@NonNull String deptid, @NonNull String courseid) {
         var sql = "select * from Course where deptid=:val1 and courseid=:val2";
         try (var con = sql2o.open()) {
             var obj = con.createQuery(sql).addParameter("val1", deptid).addParameter("val2", courseid)
@@ -172,7 +189,7 @@ public class DBUtil {
         }
     }
 
-    public static Enroll findEnroll(String keyword) {
+    public static Enroll findEnroll(@NonNull String keyword) {
         // Find who enrolled, find enrolled by who
 
         // select * from Enroll where studentid='122235d' and deptid='ISE' and
@@ -185,7 +202,7 @@ public class DBUtil {
         }
     }
 
-    public static Teach findTeach(String id) {
+    public static Teach findTeach(@NonNull String id) {
         // select * from Teach where deptid='ISE' and courseid=101;
         var sql = "select * from Teach where teacherid=:val1";
         try (var con = sql2o.open()) {

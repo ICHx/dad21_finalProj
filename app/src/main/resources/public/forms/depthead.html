@@ -2,26 +2,64 @@
 
 <head>
     <title>Assign Dept Head</title>
-
+    <link rel="stylesheet" href="/common.css">
 </head>
 
 <body>
     <p>Assign DeptHead.</p>
-    
+
 
     <div id="deptform">
-        <p>{{message}}</p>
+        <h1>{{message}}</h1>
+
+        <div>
+            <p>List of Dept Heads</p>
+            <Select v-model="selectedDh" multiple="yes">
+                <Option v-for="dh in dhList" :value="dh">
+                    {{dh.fordeptid}} = {{dh.headid}}
+                </Option>
+            </Select>
+        </div>
+
+        <div>
             <ul>
-                <div v-for="(key1) in fields">
-                    <label>{{key1}}</label>
-                    <input type="text" v-model="bean[key1]" :name="key1" />
+                <div id="headid_select">
+                    <label>HeadID</label>
+                    <Select v-model="bean.headid" name="headid" key="headid">
+                        <Option v-for="t in teacherList" :value="t.netid">
+                                {{t.netid}} {{t.firstname}} {{t.lastname}}
+                        </Option>
+                    </Select>
                 </div>
-                
+                <div id="fordeptid_select">
+                    <label>ForDept</label>
+                    <Select v-model="bean.fordeptid" name="fordeptid" key="fordeptid">
+                        <Option v-for="t in deptList" :value="t.deptid">
+                            {{t.deptid}}
+                        </Option>
+                    </Select>
+                </div>
             </ul>
-            
-            <button type="button" onclick="vm.submitBean()">Done(API)</button>
-    </div>
-    
+            <button type="button" v-on:click="submitBean">Create/Update</button>
+        </div>
+        <div>
+
+            <h4>Info:</h4>
+            <p>Current DeptHead: {{selectedDh}}</p>
+            <p>To be Assigned: {{this.bean}}</p>
+        </div>
+        <div id="debug">
+            <h3>Debug:</h3>
+            <div v-for="dept in deptList">
+                {{dept}}
+            </div>
+
+            <div v-for="teacher in teacherList">
+                {{teacher}}
+            </div>
+        </div>
+    </div note="endOfVue">
+
     <script src="https://unpkg.com/vue@next"></script>
     <script src="depthead.js"></script>
 </body>

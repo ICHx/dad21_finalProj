@@ -2,7 +2,7 @@
 
 <head>
     <title>Form</title>
-
+    <link rel="stylesheet" href="/common.css">
 </head>
 
 <body>
@@ -11,7 +11,7 @@
 
     <div id="deptform">
         <p>{{message}}</p>
-        <Form action="/api/dept/add">
+        <Form action="/view/dept/get">
             <ul>
                 <div v-for="(key1) in fields">
                     <label>{{key1}}</label>

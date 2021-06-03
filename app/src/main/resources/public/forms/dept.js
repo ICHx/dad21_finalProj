@@ -18,7 +18,7 @@ const formApp = {
             fields: fields,
         }
     },
-    computed(){
+    computed:{
     },
     methods:{
         test(){
