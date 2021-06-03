@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <title>Create/Edit Account</title>
+
+</head>
+
+<body>
+    <div id="deptform">
+        <p>{{message}}</p>
+            <ul>
+                <div v-for="(key1) in fields">
+                    <label>{{key1}}</label>
+                    <input type="text" v-model="bean[key1]" :name="key1" />
+                </div>
+                
+            </ul>
+            
+            <button type="button" onclick="vm.submitBean()">Done(API)</button>
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="account.js"></script>
+</body>
+
+</html>

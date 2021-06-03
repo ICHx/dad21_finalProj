@@ -1,12 +1,12 @@
 package studentDatabase.Pojo;
 
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
 public class Account {
-    @NotNull private String netid;
+    @NonNull private String netid;
     private String firstname;
     private String lastname;
-    private String deptid;
+    @NonNull private String deptid;
     private String gender;
     private String phone;
 
