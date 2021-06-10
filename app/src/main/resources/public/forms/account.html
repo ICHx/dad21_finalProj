@@ -14,9 +14,14 @@
     <div id="container1">
         <div id="entrylist">
             <p>List of Accounts</p>
-            <Select size="7" v-model="selected">
-                <Option :value="ac" v-for="ac in acList">
-                    {{ac.netid}} {{ac.firstname}},{{ac.lastname}}
+
+            <label for="filter_input">Filter:</label>
+            <input id="filter_input" type="text" v-model="filter" />
+
+            <Select size="7" v-model="selected" v-on:dblclick="getBean()">
+                <Option :value="ac" v-for="ac in filteredList">
+                <!-- <Option :value="ac" v-for="ac in acList"> -->
+                    {{ac.netid}} {{ac.firstname}}, {{ac.lastname}}
                 </Option>
             </Select>
             <button v-on:click="getBean()" type="button">Get Selected</button>
@@ -35,6 +40,7 @@
     <hr>
     <div id="infobox">
         <h4>Info:</h4>
+        <p>Filter: {{this.filter}}</p>
         <p>Current DeptHead: {{selected}}</p>
         <p>To be Assigned: {{this.bean}}</p>
     </div>

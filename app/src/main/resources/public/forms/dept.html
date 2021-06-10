@@ -15,7 +15,7 @@
         <div id="container1">
             <div id="entrylist">
                 <p>List of Departments</p>
-                <Select size="7" v-model="selected">
+                <Select size="7" v-model="selected" v-on:dblclick="getBean()">
                     <Option :value="d" v-for="d in dList">
                         {{d.deptid}}: {{d.deptname}}
                     </Option>
@@ -24,7 +24,7 @@
             </div>
 
             <div id="entryform">
-                <ul>
+                <div>
                     <div v-for="(key1) in fields">
                         <label>{{key1}}</label>
                         <input :name="key1" type="text" v-model="this.bean[key1]" />

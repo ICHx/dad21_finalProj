@@ -1,4 +1,6 @@
 // Vue Component as a module
+// ! disabled and replaced by navApp, which is a new Vue instance.
+
 const navcomp = function(app){
     app.component('global-navbar', {
         data() {

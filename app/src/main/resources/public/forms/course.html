@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>Assign Dept Head</title>
+    <link href="/common.css" rel="stylesheet">
+</head>
+
+<body>
+    <style>
+        label {
+            text-align: left !important;
+        }
+    </style>
+
+    <p>Create/Edit Course.</p>
+    <div id="navApp"></div>
+
+    <div id="deptform">
+        <h1>{{message}}</h1>
+
+        <div id="container1">
+            <div id="entrylist">
+                <p>List of Courses</p>
+                <Select size="7" v-model="selected" v-on:dblclick="getBean()">
+                    <Option :value="c" v-for="c in cList">
+                        {{c.deptid}} {{c.courseid}} {{c.coursename}}
+                    </Option>
+                </Select>
+
+                <button v-on:click="getBean()" type="button">Get Selected</button>
+            </div>
+
+            <div id="entryform">
+                <div v-for="(key1) in fields">
+                    <label>{{key1}}</label>
+                    <input :name="key1" type="text" v-model="bean[key1]" />
+                </div>
+                <button type="button" v-on:click="submitBean">Create/Update</button>
+            </div>
+        </div>
+        <hr />
+        <div id="infobox">
+            <h4>Info:</h4>
+            <p>Current: {{selected}}</p>
+            <p>To be Assigned: {{this.bean}}</p>
+        </div>
+    </div>
+    <!--    note="endOfVue"-->
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="course.js"></script>
+    <script src="../components/navApp.js" type="module"></script>
+</body>
+
+</html>

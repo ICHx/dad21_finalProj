@@ -1,6 +1,7 @@
 package studentDatabase.API;
 
 import io.javalin.http.Context;
+import studentDatabase.App;
 import studentDatabase.DBUtil;
 
 public class Ls {
@@ -38,6 +39,9 @@ public class Ls {
         System.out.println("accessed /api/course/list");
         try {
             var c = DBUtil.findCourse();
+            if(App.DEBUG==1){
+                System.out.println(c);
+            }
             ctx.json(c);
         } catch (Exception e) {
             ctx.result(e.getMessage());

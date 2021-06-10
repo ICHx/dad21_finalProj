@@ -7,7 +7,7 @@ import studentDatabase.DBUtil;
  * *Get "key", find entries matched
  */
 public class Get {
-    
+    static String NOTFOUND = "not found";
     
     public static void dept(Context ctx) {
         var key = ctx.queryParam("key");
@@ -36,6 +36,10 @@ public class Get {
         var key = ctx.queryParam("key");
         try {
             var dh = DBUtil.findDepthead(key);
+            if(dh==null){
+                ctx.result(NOTFOUND);
+                return;
+            }
             ctx.json(dh);
         } catch (Exception e) {
             ctx.result(e.getMessage());

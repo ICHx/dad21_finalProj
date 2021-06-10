@@ -1,12 +1,12 @@
 package studentDatabase.Pojo;
 
 import lombok.Data;
-import org.jetbrains.annotations.NotNull;
+import lombok.NonNull;
 
 @Data
 public class DeptHead {
     
-    @NotNull
+    @NonNull
     private String fordeptid;
     private String headid;
     

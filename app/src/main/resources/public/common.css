@@ -3,9 +3,9 @@ html {
     background-color: darkgray !important;
 }
 body {
-    width: 50%;
-    min-width: 30em;
-    max-width: 100em;
+    width: 90%;
+    min-width: 50em;
+    max-width: 200em;
     margin: 0 auto;
     font-family: "Droid Sans", "Verdana", "sans-serif";
     background-color: inherit !important;
@@ -35,11 +35,14 @@ nav a:hover {
     background-color: aquamarine;
     padding: 1em;
     font-size: x-small;
+    max-height: 20em;
+    overflow-y: scroll;
 }
 
 #deptform {
     padding: 1em;
     background-color: aliceblue;
+    min-height: 20em;
 }
 
 

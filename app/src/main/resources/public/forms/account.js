@@ -19,15 +19,28 @@ const formApp = {
         return {
             message: "Hello",
             fields: fields,
-            bean: {...schemabean},
-            acList:[],
-            selected:{},
+            bean: { ...schemabean },
+            acList: [],
+            selected: {},
+            filter: null,
         }
     },
-    created(){
+    created() {
         this.init();
     },
-    computed: {},
+    computed: {
+        filteredList: function () {
+            if (this.filter) {
+                return this.acList
+                    .filter(n => {
+                        return Object.values(n).join()
+                            .includes(this.filter)
+                    })
+            } else {
+                return this.acList;
+            }
+        }
+    },
     methods: {
         async init() {
             var pacList = async () => {
@@ -35,8 +48,9 @@ const formApp = {
                 return res.json();
             }
             this.acList = await pacList();
-            this.bean={...schemabean};
-            this.selected={};
+            this.bean = { ...schemabean };
+            this.selected = {};
+            this.filter = null;
 
         },
         async submitBean() {
@@ -54,8 +68,8 @@ const formApp = {
         },
         async getBean() {
             console.log(this.bean)  //!@Before: same as vm.$data.bean
-            this.bean = {...this.selected};
-            console.log(this.bean); //!@After
+            this.bean = { ...this.selected };
+
         },
         async delBean() {
             const resp = await fetch("/api/account/del", {

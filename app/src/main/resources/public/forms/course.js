@@ -2,14 +2,14 @@
 
 'use strict'
 
-class dept {
+class schema {
     deptid;
-    deptname;
-    deptaddress;
-    deptphone;
+    courseid;
+    coursename;
+    remarks;
 }
 
-const schemabean = new dept();
+const schemabean = new schema();
 const fields = Object.keys(schemabean);
 
 
@@ -17,36 +17,35 @@ const formApp = {
     data() {
         return {
             message: "Hello",
-            bean: {...schemabean},
+            bean: { ...schemabean },
             fields: fields,
-            dList:[],
-            selected:{},
+            cList: [],
+            selected: [],
         }
     },
-    created(){
+    computed: {},
+    created() {
         this.init();
     },
-    computed: {},
     methods: {
+        test() {
+            console.log("hello world");
+        },
         async init() {
-            var pdList = async () => {
-                var res = await fetch("/api/dept/list", {});
+
+            var pcList = async () => {
+                var res = await fetch("/api/course/list", {});
                 return res.json();
             }
-            this.dList = await pdList();
-            this.bean={...schemabean};
-            this.selected={};
 
+            this.cList = await pcList();
         },
         async getBean() {
             console.log(this.bean)  //!@Before: same as vm.$data.bean
-            this.bean = {...this.selected};
+            this.bean = { ...this.selected };
         },
-        
-        // ?no delete for department
-
         async submitBean() {
-            const resp = await fetch("/api/dept/add", {
+            const resp = await fetch("/api/course/add", {
                 method: 'PUT',
                 cache: 'no-cache',
                 body: JSON.stringify(this.bean)
@@ -55,8 +54,10 @@ const formApp = {
             const msg = await resp.text();
             alert(msg);
 
+            // refresh list
             await this.init();
-        }
+        },
+
     }
 }
 

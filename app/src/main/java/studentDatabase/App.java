@@ -10,6 +10,7 @@ import studentDatabase.Template.View;
 public class App {
     
     public final static int PORT = 4567;
+    public final static int DEBUG = 1;
     
     public static void main(String[] args) {
         route();

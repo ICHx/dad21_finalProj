@@ -1,11 +1,12 @@
 package studentDatabase.Pojo;
 
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 public class Course {
-    private String deptid;
     private int courseid;
+    @NonNull private String deptid;
     private String coursename;
     private String remarks;
     
