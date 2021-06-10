@@ -2,27 +2,47 @@
 
 <head>
     <title>Create/Edit Account</title>
-    <link rel="stylesheet" href="/common.css">
+    <link href="/common.css" rel="stylesheet">
 </head>
 
 <body>
-    <div id="deptform">
-        <p>{{message}}</p>
-            <ul>
-                <div v-for="(key1) in fields">
-                    <label>{{key1}}</label>
-                    <input type="text" v-model="bean[key1]" :name="key1" />
-                </div>
-                
-            </ul>
-            
-            <button type="button" onclick="vm.getBean()">Get By ID</button>
-            <button type="button" onclick="vm.delBean()">Del By ID</button>
-            <button type="button" onclick="vm.submitBean()">Create/Update</button>
-    </div>
+<p>Edit Account.</p>
+<div id="navApp"></div>
+<div id="deptform">
+    <h1>{{message}}</h1>
     
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="account.js"></script>
+    <div id="container1">
+        <div id="entrylist">
+            <p>List of Accounts</p>
+            <Select size="7" v-model="selected">
+                <Option :value="ac" v-for="ac in acList">
+                    {{ac.netid}} {{ac.firstname}},{{ac.lastname}}
+                </Option>
+            </Select>
+            <button v-on:click="getBean()" type="button">Get Selected</button>
+        </div>
+        <div id="entryform">
+            <div v-for="(key1) in fields">
+                <label>{{key1}}</label>
+                <input :name="key1" type="text" v-model="bean[key1]"/>
+            </div>
+            
+            
+            <button v-on:click="submitBean()" type="button">Create/Update</button>
+            <button v-on:click="delBean()" type="button">Del By ID</button>
+        </div>
+    </div>
+    <hr>
+    <div id="infobox">
+        <h4>Info:</h4>
+        <p>Current DeptHead: {{selected}}</p>
+        <p>To be Assigned: {{this.bean}}</p>
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="account.js"></script>
+<script src="../components/navApp.js" type="module"></script>
 </body>
 
 </html>

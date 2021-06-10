@@ -13,7 +13,7 @@ public class Ls {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void account(Context ctx) {
         System.out.println("accessed /api/account/list");
         try {
@@ -23,7 +23,7 @@ public class Ls {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void depthead(Context ctx) {
         System.out.println("accessed /api/depthead/list");
         try {
@@ -33,7 +33,7 @@ public class Ls {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void course(Context ctx) {
         System.out.println("accessed /api/course/list");
         try {
@@ -43,7 +43,7 @@ public class Ls {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void enroll(Context ctx) {
         System.out.println("accessed /api/enroll/list");
         try {
@@ -53,7 +53,7 @@ public class Ls {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void teach(Context ctx) {
         System.out.println("accessed /api/teach/list");
         try {
@@ -63,5 +63,5 @@ public class Ls {
             ctx.result(e.getMessage());
         }
     }
-
+    
 }

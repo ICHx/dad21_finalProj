@@ -1,9 +1,9 @@
 package studentDatabase.Template;
 
-import java.util.HashMap;
-
 import io.javalin.http.Context;
 import studentDatabase.DBUtil;
+
+import java.util.HashMap;
 
 /**
  * For server-side templating demonstration only
@@ -14,9 +14,9 @@ public class View {
         var deptid = ctx.queryParam("deptid");
         // ?fordeptid=xxx
         System.out.println("accessed /view/dept/get");
-
+        
         var map = new HashMap<String, Object>();
-
+        
         try {
             var d = DBUtil.findDept(deptid); // null if not found
             map.put("obj", d);
@@ -25,7 +25,7 @@ public class View {
             map.put("msg", e.getMessage());
         } finally {
             // ?template engine hate null
-            ctx.render("/templates/dept.html", map); 
+            ctx.render("/templates/dept.html", map);
         }
     }
 }

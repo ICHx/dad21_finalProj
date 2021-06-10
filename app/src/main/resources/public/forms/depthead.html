@@ -2,66 +2,78 @@
 
 <head>
     <title>Assign Dept Head</title>
-    <link rel="stylesheet" href="/common.css">
+    <link href="/common.css" rel="stylesheet">
 </head>
 
 <body>
-    <p>Assign DeptHead.</p>
+<style>
 
 
-    <div id="deptform">
-        <h1>{{message}}</h1>
+label{
+    text-align: left !important;
+}
 
-        <div>
+
+</style>
+
+<p>Assign DeptHead.</p>
+<div id="navApp"></div>
+
+<div id="deptform">
+    <h1>{{message}}</h1>
+    
+    <div id="container1">
+        <div id="entrylist">
             <p>List of Dept Heads</p>
-            <Select v-model="selectedDh" multiple="yes">
-                <Option v-for="dh in dhList" :value="dh">
+            <Select size="7" v-model="selectedDh">
+                <Option :value="dh" v-for="dh in dhList">
                     {{dh.fordeptid}} = {{dh.headid}}
                 </Option>
             </Select>
         </div>
-
-        <div>
-            <ul>
-                <div id="headid_select">
-                    <label>HeadID</label>
-                    <Select v-model="bean.headid" name="headid" key="headid">
-                        <Option v-for="t in teacherList" :value="t.netid">
-                                {{t.netid}} {{t.firstname}} {{t.lastname}}
-                        </Option>
-                    </Select>
-                </div>
+        
+        <div id="entryform">
                 <div id="fordeptid_select">
-                    <label>ForDept</label>
-                    <Select v-model="bean.fordeptid" name="fordeptid" key="fordeptid">
-                        <Option v-for="t in deptList" :value="t.deptid">
+                    <label>For Department</label>
+                    <Select key="fordeptid" name="fordeptid" v-model="bean.fordeptid">
+                        <Option :value="t.deptid" v-for="t in deptList">
                             {{t.deptid}}
                         </Option>
                     </Select>
                 </div>
-            </ul>
+                <div id="headid_select">
+                    <label>HeadID</label>
+                    <Select key="headid" name="headid" v-model="bean.headid">
+                        <Option :value="t.netid" v-for="t in teacherList">
+                            {{t.netid}} {{t.firstname}} {{t.lastname}}
+                        </Option>
+                    </Select>
+                </div>
             <button type="button" v-on:click="submitBean">Create/Update</button>
         </div>
-        <div>
-
-            <h4>Info:</h4>
-            <p>Current DeptHead: {{selectedDh}}</p>
-            <p>To be Assigned: {{this.bean}}</p>
+    </div>
+    <hr/>
+    <div id="infobox">
+        <h4>Info:</h4>
+        <p>Current DeptHead: {{selectedDh}}</p>
+        <p>To be Assigned: {{this.bean}}</p>
+    </div>
+    <div id="debug">
+        <h3>Debug:</h3>
+        <div v-for="dept in deptList">
+            {{dept}}
         </div>
-        <div id="debug">
-            <h3>Debug:</h3>
-            <div v-for="dept in deptList">
-                {{dept}}
-            </div>
-
-            <div v-for="teacher in teacherList">
-                {{teacher}}
-            </div>
+        
+        <div v-for="teacher in teacherList">
+            {{teacher}}
         </div>
-    </div note="endOfVue">
+    </div>
+</div>
+<!--    note="endOfVue"-->
 
-    <script src="https://unpkg.com/vue@next"></script>
-    <script src="depthead.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="depthead.js" type="module"></script>
+<script src="../components/navApp.js" type="module"></script>
 </body>
 
 </html>

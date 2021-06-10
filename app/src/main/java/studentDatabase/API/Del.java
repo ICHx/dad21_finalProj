@@ -30,7 +30,7 @@ public class Del {
             ctx.result(result);
         }
     }
-
+    
     public static void course(Context ctx) {
         System.out.println(ctx.body());
         var dpt = ctx.bodyAsClass(Course.class);

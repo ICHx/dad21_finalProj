@@ -1,4 +1,6 @@
+// import {navcomp} from '/components/nav.js';
 'use strict'
+
 class schema {
     netid;
     firstname;
@@ -18,13 +20,24 @@ const formApp = {
             message: "Hello",
             fields: fields,
             bean: {...schemabean},
+            acList:[],
+            selected:{},
         }
     },
-    computed: {
+    created(){
+        this.init();
     },
+    computed: {},
     methods: {
-        test() {
-            console.log("hello world");
+        async init() {
+            var pacList = async () => {
+                var res = await fetch("/api/account/list", {});
+                return res.json();
+            }
+            this.acList = await pacList();
+            this.bean={...schemabean};
+            this.selected={};
+
         },
         async submitBean() {
             const resp = await fetch("/api/account/add", {
@@ -35,15 +48,13 @@ const formApp = {
 
             const msg = await resp.text();
             alert(msg);
+
+            // refresh list
+            await this.init();
         },
         async getBean() {
             console.log(this.bean)  //!@Before: same as vm.$data.bean
-            const req = await fetch(`/api/account/get?key=${this.bean['netid']}`, {
-                method: 'GET',
-                cache: 'no-cache',
-            });
-
-            this.bean = await req.json();
+            this.bean = {...this.selected};
             console.log(this.bean); //!@After
         },
         async delBean() {
@@ -55,11 +66,13 @@ const formApp = {
 
             const msg = await resp.text();
             alert(msg);
+
+            // refresh list
+            await this.init();
         }
     }
 }
 
 const app = Vue.createApp(formApp)
+// navcomp(app);
 const vm = app.mount("#deptform")
-
-vm.test();

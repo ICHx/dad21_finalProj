@@ -8,8 +8,8 @@ import studentDatabase.Pojo.*;
  * *This class add/update row to database
  */
 public class Put {
-
-
+    
+    
     public static void dept(Context ctx) {
         System.out.println(ctx.body());
         Dept dpt = ctx.bodyAsClass(Dept.class);
@@ -35,7 +35,7 @@ public class Put {
             ctx.result(result);
         }
     }
-
+    
     public static void course(Context ctx) {
         System.out.println(ctx.body());
         var dpt = ctx.bodyAsClass(Course.class);
@@ -55,9 +55,9 @@ public class Put {
         String result = "Success";
         try {
             DBUtil.insert(dpt);
+            ctx.result(result);
         } catch (Exception e) {
             result = e.getMessage();
-        } finally {
             ctx.result(result);
         }
     }
@@ -87,5 +87,5 @@ public class Put {
             ctx.result(result);
         }
     }
-
+    
 }

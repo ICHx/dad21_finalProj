@@ -1,4 +1,7 @@
+// import {navcomp} from '/components/nav.js';
+
 'use strict'
+
 class dept {
     deptid;
     deptname;
@@ -6,31 +9,30 @@ class dept {
     deptphone;
 }
 
-const bean = new dept();
-const fields = Object.keys(bean);
+const schemabean = new dept();
+const fields = Object.keys(schemabean);
 
 
 const formApp = {
     data() {
         return {
             message: "Hello",
-            bean: bean,
+            bean: schemabean,
             fields: fields,
         }
     },
-    computed:{
-    },
-    methods:{
-        test(){
+    computed: {},
+    methods: {
+        test() {
             console.log("hello world");
         },
-        async submitBean(){
-            const resp = await fetch("/api/dept/add",{
+        async submitBean() {
+            const resp = await fetch("/api/dept/add", {
                 method: 'PUT',
                 cache: 'no-cache',
                 body: JSON.stringify(bean)
             });
-            
+
             const msg = await resp.text();
             alert(msg);
         }
@@ -38,6 +40,5 @@ const formApp = {
 }
 
 const app = Vue.createApp(formApp)
+// navcomp(app);
 const vm = app.mount("#deptform")
-
-vm.test();

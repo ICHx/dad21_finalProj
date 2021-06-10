@@ -19,7 +19,7 @@ public class Get {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void account(Context ctx) {
         System.out.println("accessed /api/account/get");
         var key = ctx.queryParam("key");
@@ -30,7 +30,7 @@ public class Get {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void depthead(Context ctx) {
         System.out.println("accessed /api/depthead/get");
         var key = ctx.queryParam("key");
@@ -41,19 +41,19 @@ public class Get {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void course(Context ctx) {
         var deptid = ctx.queryParam("deptid");
         var courseid = ctx.queryParam("courseid");
         System.out.println("accessed /api/course/get");
         try {
-            var c = DBUtil.findCourse(deptid,courseid);
+            var c = DBUtil.findCourse(deptid, courseid);
             ctx.json(c);
         } catch (Exception e) {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void enroll(Context ctx) {
         var key = ctx.queryParam("key");
         System.out.println("accessed /api/enroll/get");
@@ -64,7 +64,7 @@ public class Get {
             ctx.result(e.getMessage());
         }
     }
-
+    
     public static void teach(Context ctx) {
         var key = ctx.queryParam("key");
         System.out.println("accessed /api/teach/list");
