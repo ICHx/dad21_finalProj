@@ -17,24 +17,46 @@ const formApp = {
     data() {
         return {
             message: "Hello",
-            bean: schemabean,
+            bean: {...schemabean},
             fields: fields,
+            dList:[],
+            selected:{},
         }
+    },
+    created(){
+        this.init();
     },
     computed: {},
     methods: {
-        test() {
-            console.log("hello world");
+        async init() {
+            var pdList = async () => {
+                var res = await fetch("/api/dept/list", {});
+                return res.json();
+            }
+            this.dList = await pdList();
+            this.bean={...schemabean};
+            this.selected={};
+
         },
+        async getBean() {
+            console.log(this.bean)  //!@Before: same as vm.$data.bean
+            this.bean = {...this.selected};
+            console.log(this.bean); //!@After
+        },
+        
+        // ?no delete for department
+
         async submitBean() {
             const resp = await fetch("/api/dept/add", {
                 method: 'PUT',
                 cache: 'no-cache',
-                body: JSON.stringify(bean)
+                body: JSON.stringify(this.bean)
             });
 
             const msg = await resp.text();
             alert(msg);
+
+            await this.init();
         }
     }
 }

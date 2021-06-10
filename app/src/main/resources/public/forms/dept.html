@@ -6,28 +6,41 @@
 </head>
 
 <body>
-<p>Dept Form.</p>
-<div id="navApp"></div>
+    <p>Dept Form.</p>
+    <div id="navApp"></div>
 
-<div id="deptform">
-    <h1>{{message}}</h1>
-    <Form action="/view/dept/get">
-        <ul>
-            <div v-for="(key1) in fields">
-                <label>{{key1}}</label>
-                <input :name="key1" type="text" v-model="this.bean[key1]"/>
+    <div id="deptform">
+        <h1>{{message}}</h1>
+
+        <div id="container1">
+            <div id="entrylist">
+                <p>List of Departments</p>
+                <Select size="7" v-model="selected">
+                    <Option :value="d" v-for="d in dList">
+                        {{d.deptid}}: {{d.deptname}}
+                    </Option>
+                </Select>
+                <button v-on:click="getBean()" type="button">Get Selected</button>
             </div>
-        
-        </ul>
-        
-        <button type="submit">Done</button>
-        <button type="button" v-on:click="submitBean()">Done(API)</button>
-    </Form>
-</div>
 
-<script src="https://unpkg.com/vue@next"></script>
-<script src="dept.js"></script>
-<script src="../components/navApp.js" type="module"></script>
+            <div id="entryform">
+                <ul>
+                    <div v-for="(key1) in fields">
+                        <label>{{key1}}</label>
+                        <input :name="key1" type="text" v-model="this.bean[key1]" />
+                    </div>
+
+                </ul>
+
+                <button type="button" v-on:click="submitBean()">Done</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="dept.js"></script>
+    <script src="../components/navApp.js" type="module"></script>
 </body>
 
 </html>

@@ -5,7 +5,8 @@ import lombok.NonNull;
 
 @Data
 public class Dept {
-    @NonNull String deptid;
+    @NonNull 
+    private String deptid;
     private String deptname;
     private String deptaddress;
     private int deptphone;

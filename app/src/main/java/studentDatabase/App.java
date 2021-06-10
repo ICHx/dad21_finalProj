@@ -18,7 +18,7 @@ public class App {
     public static void route() {
         var app = Javalin.create(config -> {
             config.addStaticFiles("public");
-            config.addStaticFiles("vue");
+            // config.addStaticFiles("vue");
         }).start(PORT);
         
         app.get("/view/dept/get", View::dept); // template view

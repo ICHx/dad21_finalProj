@@ -185,7 +185,7 @@ public class DBUtil {
     }
     
     public static Enroll findEnroll(@NonNull String keyword) {
-        // Find who enrolled, find enrolled by who
+        // ?Find who enrolled, find enrolled by who
         
         // select * from Enroll where studentid='122235d' and deptid='ISE' and
         // courseid=101;
@@ -198,6 +198,8 @@ public class DBUtil {
     }
     
     public static Teach findTeach(@NonNull String id) {
+        // ?find all courses a teacher is teaching
+
         // select * from Teach where deptid='ISE' and courseid=101;
         var sql = "select * from Teach where teacherid=:val1";
         try (var con = sql2o.open()) {

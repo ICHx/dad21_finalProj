@@ -1,0 +1,11 @@
+{
+    "extends": "recommended",
+    "rules": {
+        "BlockEndsWithBlankLine": {
+            "enabled": false
+        },
+        "CompileStatic": {
+            "enabled": false
+        }
+    }
+}

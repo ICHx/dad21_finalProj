@@ -24,6 +24,8 @@ const navApp = {
 const app = Vue.createApp(navApp)
 export const vm = app.mount("#navApp")
 
+
+// auto-theming bootstrap
 window.addEventListener('load',()=>{
    const arrayOfButtons = document.querySelectorAll("button");
     console.log(arrayOfButtons);

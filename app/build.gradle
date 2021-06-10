@@ -9,28 +9,26 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
-    id "io.freefair.lombok" version "6.0.0-m2"
+    id 'io.freefair.lombok' version '6.0.0-m2'
 }
 
 repositories {
     // Use JCenter for resolving dependencies.
-    jcenter()
+    mavenCentral()
 }
 
 dependencies {
     // Use JUnit test framework.
     testImplementation 'junit:junit:4.13'
-    
-    implementation "org.thymeleaf:thymeleaf:3.0.11.RELEASE"
+
+    implementation 'org.thymeleaf:thymeleaf:3.0.11.RELEASE'
     implementation 'io.javalin:javalin:3.13.6'
-    implementation "org.slf4j:slf4j-simple:1.7.30"
-    
+    implementation 'org.slf4j:slf4j-simple:1.7.30'
+
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
     implementation group: 'org.sql2o', name: 'sql2o', version: '1.6.0'
-    implementation "com.fasterxml.jackson.core:jackson-databind:2.10.3"
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.10.3'
 
-
-    
 }
 
 application {
