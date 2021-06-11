@@ -1,93 +1,106 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css");
 html {
-    background-color: darkgray !important;
+  /* https://cssgradient.io/ , need to prevent repeating https://stackoverflow.com/a/31712795 */
+  background: rgb(57, 89, 101);
+  background: linear-gradient(
+    0deg,
+    rgba(57, 89, 101, 1) 0%,
+    rgba(225, 241, 244, 1) 100%
+  ) fixed;
+  background-repeat: no-repeat;
 }
 body {
-    width: 90%;
-    min-width: 50em;
-    max-width: 200em;
-    margin: 0 auto;
-    font-family: "Droid Sans", "Verdana", "sans-serif";
-    background-color: inherit !important;
+  width: 90%;
+  min-width: 30em;
+  max-width: 200em;
+  margin: 0 auto;
+  font-family: "Droid Sans", "Verdana", "sans-serif";
+  background-color: inherit !important;
 }
 
 nav {
-    background-color: #333;
-    overflow: hidden;
-    font-family: "Times New Roman", "Times", "serif";
+  background-color: #333;
+  overflow: hidden;
+  font-family: "Times New Roman", "Times", "serif";
 }
 
 nav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
 }
 
 nav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-#debug {
-    background-color: aquamarine;
-    padding: 1em;
-    font-size: x-small;
-    max-height: 20em;
-    overflow-y: scroll;
-}
-
-#deptform {
-    padding: 1em;
-    background-color: aliceblue;
-    min-height: 20em;
-}
-
-
-#container1 {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-
-#container1 > div {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-    max-width: 500px;
-}
-
-#container1 input {
-    width: 100%;
-    margin-bottom: 5px;
-}
-
-#container1 button {
-    margin-top: 5px;
+  background-color: #ddd;
+  color: black;
 }
 
 label {
-    display: inline-block;
-    width: 120px;
-    margin: 5px;
-    font-size: smaller;
+  display: inline-block;
+  width: 120px;
+  margin: 5px;
+  font-size: smaller;
 }
 
 select {
-    /* single selection */
-    min-width: 10em;
-    margin-bottom: 5px;
+  /* single selection */
+  min-width: 10em;
+  margin-bottom: 5px;
+  height: auto;
+  font-size: small;
+}
+
+.entrylist{
+  margin: 5px;
+}
+
+.entrylist select {
+  /* left list*/
+  min-height: 10em;
+}
+
+.debug {
+  display: none;
+  background-color: aquamarine;
+  padding: 1em;
+  font-size: x-small;
+  max-height: 20em;
+  overflow-y: scroll;
+}
+
+#deptform {
+  padding: 1em;
+  background-color: aliceblue;
+  min-height: 20em;
+}
+
+#container1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+#container1 > div {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  max-width: 500px;
+}
+
+#container1 input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+#container1 button {
+  margin-top: 5px;
+  border-radius: 0px;
 }
 
 #container1 select {
-
-    width: 100%;
+  width: 100%;
 }
-
-#entrylist select {
-    /* left list*/
-    min-height: 10em;
-}
-

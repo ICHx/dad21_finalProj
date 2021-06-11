@@ -12,13 +12,13 @@
         }
     </style>
 
-    <p>Create/Edit Enrollment record (from admin for student).</p>
+    <p>Assign instructor to course(from admin/teacher itself for teacher).</p>
     <div id="navApp"></div>
 
     <div id="deptform">
         <h1>{{message}}</h1>
 
-        <!-- * Select course through filter, select student for enroll -->
+        <!-- * Select course through filter, select student for teach -->
 
         <div id="container1" class="">
             <div class="entrylist" id="c_list">
@@ -32,11 +32,10 @@
                         {{c.deptid}}{{c.courseid}} {{c.coursename}}
                     </Option>
                 </Select>
-                <button v-on:click="select(0)" type="button">Get Selected</button>
             </div>
 
             <div class="entrylist" id="ac_list">
-                <p>List of Students</p>
+                <p>List of Staff</p>
 
                 <label for="filter_input1">Filter:</label>
                 <input id="filter_input1" type="text" v-model="filters[1]" />
@@ -46,21 +45,20 @@
                         {{ac.netid}} {{ac.firstname}}, {{ac.lastname}}
                     </Option>
                 </Select>
-                <button v-on:click="select(1)" type="button">Get Selected</button>
+
             </div>
 
             <div class="entrylist" id="e_list">
-                <p>List of Enrolls</p>
+                <p>List of Assigned pairs</p>
 
                 <label for="filter_input2">Filter:</label>
                 <input id="filter_input2" type="text" v-model="filters[2]" />
 
                 <Select size="7" v-model="selected[2]" v-on:dblclick="select(2)">
                     <Option :value="e" v-for="e in filteredEList">
-                        {{e.studentid}}, {{e.deptid}}{{e.courseid}}
+                        {{e.teacherid}}, {{e.deptid}}{{e.courseid}}
                     </Option>
                 </Select>
-                <button v-on:click="select(2)" type="button">Get Selected</button>
             </div>
 
             <div id="entryform">
@@ -71,7 +69,6 @@
                 <button type="button" v-on:click="submitBean()">Create/Update</button>
                 <button type="button" v-on:click="delBean()">Remove</button>
             </div>
-            
         </div>
         <hr />
         <div id="infobox" class="debug">
@@ -83,7 +80,7 @@
     <!--    note="endOfVue"-->
 
     <script src="https://unpkg.com/vue@next"></script>
-    <script src="enroll.js"></script>
+    <script src="teach.js"></script>
     <script src="../components/navApp.js" type="module"></script>
 </body>
 

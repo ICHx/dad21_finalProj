@@ -1,46 +1,48 @@
 <html>
-
-<head>
+  <head>
     <title>Form</title>
-    <link href="/common.css" rel="stylesheet">
-</head>
+    <link href="/common.css" rel="stylesheet" />
+  </head>
 
-<body>
+  <body>
     <p>Dept Form.</p>
     <div id="navApp"></div>
 
     <div id="deptform">
-        <h1>{{message}}</h1>
+      <h1>{{message}}</h1>
 
-        <div id="container1">
-            <div id="entrylist">
-                <p>List of Departments</p>
-                <Select size="7" v-model="selected" v-on:dblclick="getBean()">
-                    <Option :value="d" v-for="d in dList">
-                        {{d.deptid}}: {{d.deptname}}
-                    </Option>
-                </Select>
-                <button v-on:click="getBean()" type="button">Get Selected</button>
-            </div>
-
-            <div id="entryform">
-                <div>
-                    <div v-for="(key1) in fields">
-                        <label>{{key1}}</label>
-                        <input :name="key1" type="text" v-model="this.bean[key1]" />
-                    </div>
-
-                </ul>
-
-                <button type="button" v-on:click="submitBean()">Done</button>
-            </div>
-
+      <div id="container1">
+        <div class="entrylist">
+          <p>List of Departments</p>
+          <select size="7" v-model="selected" v-on:dblclick="getBean()">
+            <option :value="d" v-for="d in dList">
+              {{d.deptid}}: {{d.deptname}}
+            </option>
+          </select>
+          <button v-on:click="getBean()" type="button">Get Selected</button>
         </div>
+
+        <div id="entryform">
+          <div>
+            <div v-for="(key1) in fields">
+              <label>{{key1}}</label>
+              <input :name="key1" type="text" v-model="this.bean[key1]" />
+            </div>
+          </div>
+
+          <button type="button" v-on:click="submitBean()">Done</button>
+        </div>
+      </div>
+
+      <div id="infobox" class="debug">
+        <h4>Info:</h4>
+        <p>Current DeptHead: {{selected}}</p>
+        <p>To be Assigned: {{this.bean}}</p>
+      </div>
     </div>
 
     <script src="https://unpkg.com/vue@next"></script>
     <script src="dept.js"></script>
     <script src="../components/navApp.js" type="module"></script>
-</body>
-
+  </body>
 </html>

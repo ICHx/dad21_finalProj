@@ -5,8 +5,8 @@ import lombok.NonNull;
 
 @Data
 public class Course {
-    private int courseid;
     @NonNull private String deptid;
+    private int courseid;
     private String coursename;
     private String remarks;
     

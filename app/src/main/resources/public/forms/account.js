@@ -33,7 +33,7 @@ const formApp = {
             if (this.filter) {
                 return this.acList
                     .filter(n => {
-                        return Object.values(n).join()
+                        return Object.values(n).join('')
                             .includes(this.filter)
                     })
             } else {

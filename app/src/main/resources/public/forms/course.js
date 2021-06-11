@@ -39,6 +39,7 @@ const formApp = {
             }
 
             this.cList = await pcList();
+            this.bean = { ...schemabean }
         },
         async getBean() {
             console.log(this.bean)  //!@Before: same as vm.$data.bean

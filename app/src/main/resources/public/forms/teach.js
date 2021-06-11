@@ -3,7 +3,7 @@
 'use strict'
 
 class schema {
-    studentid;
+    teacherid;
     deptid;
     courseid;
 }
@@ -79,27 +79,25 @@ const formApp = {
             }
 
             var peList = async () => {
-                var res = await fetch("/api/enroll/list", {});
+                var res = await fetch("/api/teach/list", {});
                 return res.json();
             }
 
 
             this.acList = await pacList();
-            this.acList = this.acList.filter(n => n.netid.endsWith('d'));
+            this.acList = this.acList.filter(n => !n.netid.endsWith('d'));
 
             this.cList = await pcList();
             this.eList = await peList();
             this.filters = [null, null, null];
-            this.selected = [null, null, null]; // course, accounts, enroll
-
-            this.bean = {...schemabean}
+            this.selected = [null, null, null]; // course, accounts, teach
         },
         async getBean() {
             console.log(this.bean)  //!@Before: same as vm.$data.bean
             this.bean = { ...this.selected };
         },
         async submitBean() {
-            const resp = await fetch("/api/enroll/add", {
+            const resp = await fetch("/api/teach/add", {
                 method: 'PUT',
                 cache: 'no-cache',
                 body: JSON.stringify(this.bean)
@@ -112,7 +110,7 @@ const formApp = {
             await this.init();
         },
         async delBean() {
-            const resp = await fetch("/api/enroll/del", {
+            const resp = await fetch("/api/teach/del", {
                 method: 'PUT',
                 cache: 'no-cache',
                 body: JSON.stringify(this.bean)
@@ -133,10 +131,10 @@ const formApp = {
                     break;
                 case 1:
                     //account
-                    this.bean["studentid"] = this.selected[1]["netid"];
+                    this.bean["teacherid"] = this.selected[1]["netid"];
                     break;
                 case 2:
-                    //enroll
+                    //teach
                     this.bean = this.selected[2];
                     break;
                 default:

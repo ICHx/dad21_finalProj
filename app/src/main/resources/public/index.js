@@ -5,6 +5,7 @@ const formApp = {
     data() {
         return {
             message: "Hello",
+            role: "Admin",
         }
     },
     methods: {

@@ -19,7 +19,7 @@
         <h1>{{message}}</h1>
 
         <div id="container1">
-            <div id="entrylist">
+            <div class="entrylist">
                 <p>List of Courses</p>
                 <Select size="7" v-model="selected" v-on:dblclick="getBean()">
                     <Option :value="c" v-for="c in cList">
@@ -39,7 +39,7 @@
             </div>
         </div>
         <hr />
-        <div id="infobox">
+        <div id="infobox" class="debug">
             <h4>Info:</h4>
             <p>Current: {{selected}}</p>
             <p>To be Assigned: {{this.bean}}</p>
