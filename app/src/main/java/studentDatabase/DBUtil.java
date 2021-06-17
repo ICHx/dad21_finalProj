@@ -1,10 +1,17 @@
 package studentDatabase;
 
-import lombok.NonNull;
-import org.sql2o.Sql2o;
-import studentDatabase.Pojo.*;
-
 import java.util.List;
+
+import org.sql2o.Sql2o;
+
+import lombok.NonNull;
+import studentDatabase.Pojo.Account;
+import studentDatabase.Pojo.Course;
+import studentDatabase.Pojo.Dept;
+import studentDatabase.Pojo.DeptHead;
+import studentDatabase.Pojo.Enroll;
+import studentDatabase.Pojo.Password;
+import studentDatabase.Pojo.Teach;
 
 public class DBUtil {
     private static final Sql2o sql2o;
@@ -117,6 +124,13 @@ public class DBUtil {
         }
     }
 
+    // ?Not implemented on frontend, update password
+    // insert into Password(NetID,PIN) values("239242t","512345"); ,for password="12345"
+    public static void update(Password p) {
+        var sql = "replace into Password(netid,pin)\n" + "values(:netid,:pin)\n";
+        updateBind(p, sql);
+    }
+
     // ! Delete
     // delete from Dept where deptid="";
     public static void delete(Dept d) {
@@ -139,11 +153,13 @@ public class DBUtil {
         var sql0 = "delete from DeptHead where headid=:netid";
         var sql1 = "delete from Enroll where studentid=:netid";
         var sql2 = "delete from Teach where teacherid=:netid";
-        var sql3 = "delete from Account where netid=:netid";
+        var sql3 = "delete from Password where netid=:netid";
+        var sql4 = "delete from Account where netid=:netid";
         updateBind(a, sql0);
         updateBind(a, sql1);
         updateBind(a, sql2);
         updateBind(a, sql3);
+        updateBind(a, sql4);
 
     }
 
@@ -221,6 +237,23 @@ public class DBUtil {
             var obj = con.createQuery(sql).addParameter("val1", id).executeAndFetchFirst(Teach.class);
 
             return obj;
+        }
+    }
+
+    public static boolean checkPassword(@NonNull Password p) {
+        var sql = "select * from Password where netid=:val1";
+        try (var con = sql2o.open()) {
+            var other = con.createQuery(sql).addParameter("val1", p.getNetid()).executeAndFetchFirst(Password.class);
+
+            if (other == null) {
+                System.out.println("I: Invalid password or UserID");
+                return false;
+            }
+
+            if (App.DEBUG == 1) {
+                System.out.println("db pin=" + other.getPin());
+            }
+            return other.getPin().equals(p.getPin());
         }
     }
 

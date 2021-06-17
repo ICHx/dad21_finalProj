@@ -1,6 +1,6 @@
 # Will implement
-1. Enroll form
-2. Teach form
+1.~~ Enroll form~~
+2. ~~Teach form~~
 
 
 # May not impl

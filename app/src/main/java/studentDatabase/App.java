@@ -21,6 +21,11 @@ public class App {
             config.addStaticFiles("public");
             // config.addStaticFiles("vue");
         }).start(PORT);
+
+        app.before(Control::loginCheck);
+        app.get("/isLoggedIn",Control::isLoggedIn);
+        app.post("/login",Control::login);
+        app.get("/logout",Control::logout);
         
         app.get("/view/dept/get", View::dept); // template view
         

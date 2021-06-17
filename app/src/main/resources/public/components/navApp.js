@@ -11,6 +11,7 @@ const navApp = {
                 { name: 'Course List', link: '/forms/course.html' },
                 { name: 'Course Enroll', link: '/forms/enroll.html' },
                 { name: 'Instructor', link: '/forms/teach.html' },
+                { name: 'Logout', link: '/logout' },
             ],
         }
     },

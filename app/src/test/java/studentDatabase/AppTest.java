@@ -37,7 +37,7 @@ public class AppTest {
         
 //        enroll, teach
         DBUtil.insert(teach);
-        DBUtil.insert(enroll);
+        // DBUtil.insert(enroll);
     }
     
     @Test public  void testCourse() {
@@ -47,5 +47,18 @@ public class AppTest {
         DBUtil.insert(course);
         DBUtil.insert(course2);
         DBUtil.insert(course3);
+    }
+
+    @Test public void genereateDefaultPassword(){
+        
+        // ! generate password = netid + phone
+
+        var aclist = DBUtil.findAccount();
+        aclist.forEach((ac) -> {
+            var p = new Password(ac.getNetid(),ac.getNetid()+ac.getLastname());
+            p.hash();
+            System.out.println(p);
+            DBUtil.update(p);
+        });
     }
 }

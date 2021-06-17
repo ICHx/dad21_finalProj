@@ -7,4 +7,4 @@ build
 .idea
 bin/
 .settings/
-
+.DS_Store

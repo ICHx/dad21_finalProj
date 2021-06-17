@@ -1,22 +1,40 @@
 <html>
-
-<head>
+  <head>
     <title>Home</title>
-    <link href="/common.css" rel="stylesheet">
-</head>
+    <link href="/common.css" rel="stylesheet" />
+  </head>
 
-<body>
-<p>College Database Management System</p>
+  <body>
+    <p>College Database Management System</p>
 
-<div id="navApp"></div>
+    <div id="navApp"></div>
 
-<div id="deptform">
-    <h1>{{message}} {{role}}</h1>
-</div>
+    <div id="deptform">
+      <h1>{{message}}</h1>
 
-<script src="https://unpkg.com/vue@next"></script>
-<script src="index.js" type="module"></script>
-<script src="./components/navApp.js" type="module"></script>
-</body>
+      <div id="loginForm">
+        <div v-if="isLoggedIn==0">
+          <div>
+            <label for="netid_input">NetID</label>
+            <input id="netid_input" name="netid" v-model="this.bean.netid"/>
+          </div>
+          <div>
+            <label for="pin_input">PIN</label>
+            <input type="password" id="pin_input" name="pin" v-model="this.bean.pin" v-on:keyup.enter="submitLogin"/>
+          </div>
+          <button v-on:click="submitLogin">Submit</button>
+        </div>
+      </div>
 
+
+      <div id="infobox" class="debug">
+        <h4>Info:</h4>
+        <p>To be Assigned: {{this.bean}}</p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="index.js"></script>
+    <script src="./components/navApp.js" type="module"></script>
+  </body>
 </html>
