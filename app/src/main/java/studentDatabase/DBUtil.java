@@ -5,19 +5,22 @@ import java.util.List;
 import org.sql2o.Sql2o;
 
 import lombok.NonNull;
-import studentDatabase.Pojo.Account;
-import studentDatabase.Pojo.Course;
-import studentDatabase.Pojo.Dept;
-import studentDatabase.Pojo.DeptHead;
-import studentDatabase.Pojo.Enroll;
-import studentDatabase.Pojo.Password;
-import studentDatabase.Pojo.Teach;
+import studentDatabase.Pojo.*;
 
 public class DBUtil {
-    private static final Sql2o sql2o;
+    /**
+     * DB Configurations
+     */
+    private static final String DB_LOC = "jdbc:mysql://192.168.0.202/college";
+    private static final String DB_AC = "phone";
+    private static final String DB_PIN = "phosql12345ne";
 
+    /**
+     * Database connection establishment.
+     */
+    private static final Sql2o sql2o;
     static {
-        sql2o = new Sql2o("jdbc:mysql://192.168.0.202/college", "phone", "sql12345");
+        sql2o = new Sql2o(DB_LOC, DB_AC, DB_PIN);
     }
 
     public static Sql2o getSql2o() {
