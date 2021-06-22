@@ -1,5 +1,10 @@
 // import {navcomp} from '/components/nav.js';
 
+/**
+ * Changelog:
+ * 22-June: fixed switch case(2) would be edited by other cases.
+ */
+
 'use strict'
 
 class schema {
@@ -123,6 +128,7 @@ const formApp = {
             await this.init();
         },
         select(key) {
+
             switch (key) {
                 case 0:
                     //course
@@ -135,7 +141,7 @@ const formApp = {
                     break;
                 case 2:
                     //teach
-                    this.bean = this.selected[2];
+                    this.bean = {...this.selected[2]};
                     break;
                 default:
                     console.log("E: Illegal select")

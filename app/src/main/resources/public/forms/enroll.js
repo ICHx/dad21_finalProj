@@ -1,5 +1,10 @@
 // import {navcomp} from '/components/nav.js';
 
+/**
+ * Changelog:
+ * 22-June: fixed switch case(2) would be edited by other cases.
+ */
+
 'use strict'
 
 class schema {
@@ -137,7 +142,7 @@ const formApp = {
                     break;
                 case 2:
                     //enroll
-                    this.bean = this.selected[2];
+                    this.bean = {...this.selected[2]};
                     break;
                 default:
                     console.log("E: Illegal select")
