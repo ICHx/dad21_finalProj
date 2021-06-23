@@ -13,7 +13,7 @@ public class DBUtil {
      */
     private static final String DB_LOC = "jdbc:mysql://192.168.0.202/college";
     private static final String DB_AC = "phone";
-    private static final String DB_PIN = "phosql12345ne";
+    private static final String DB_PIN = "sql12345";
 
     /**
      * Database connection establishment.
