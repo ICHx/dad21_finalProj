@@ -1,3 +1,6 @@
+# College info database
+client: Vue3, server: JDK11 Javalin REST service
+
 ## Web Interface
 
 ![picture 1](images/account.png)  
