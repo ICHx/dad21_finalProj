@@ -1,6 +1,14 @@
 # College info database
 client: Vue3, server: JDK11 Javalin REST service
 
+# Build Instruction
+1. Create any SQL-compliant server
+2. Run main.sql on /db/
+3. Edit DBUtil to connect JDBC to the server being set up.
+4. Run ./gradlew test to populate test data
+5. Run ./gradlew run to build and run the project
+6. The webserver is started on PORT determined by constants defined in App.java
+
 ## Web Interface
 
 ![picture 1](images/account.png)  
