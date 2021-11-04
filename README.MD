@@ -10,10 +10,11 @@ client: Vue3, server: JDK11 Javalin REST service
 6. The webserver is started on PORT determined by constants defined in App.java
 
 # Hosted Instance
->URL:
-> http://
 
->Sample Account:
+## URL:
+http://gcp-wormfeed.duckdns.org:8002/
+
+## Sample Account:
 >(netid=122235d, pin=122235dChan)
 
 ## Web Interface
