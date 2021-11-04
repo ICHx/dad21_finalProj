@@ -11,17 +11,17 @@ public class AppTest {
 
     @Test
     public void testSQL() throws Exception {
-        // var dept = new Dept("ISE", "Industrial and Sys Eng", "Room 208", 25567111);
+        var dept = new Dept("ISE", "Industrial and Sys Eng", "Room 208", 25567111);
         var course = new Course("ISE", 101, "Introduction to engineering", "nothing given");
         var ac = new Account("122235d", "TaiMan", "Chan", "ISE", "M", "+852-21090000");
 
         var ach = new Account("130622t", "Ben", "Cheung", "ISE", "M", "+852-98993310");
-        var ach2 = new Account("177722t", "Ken", "Chung", "IS", "M", "+852-98994410");
+        var ach2 = new Account("177722t", "Ken", "Chung", "ISE", "M", "+852-98994410");
 
         var dh = new DeptHead("130622t", "ISE");
-        var dh2 = new DeptHead("177722t", "IS");
+        var dh2 = new DeptHead("177722t", "ISE");
 
-        // DBUtil.insert(dept);
+        DBUtil.insert(dept);
         DBUtil.insert(course);
         DBUtil.insert(ac);
 
@@ -41,11 +41,11 @@ public class AppTest {
     @Test
     public void testCourse() {
         var course = new Course("CS", 102, "Adv CS", null);
-        var course2 = new Course("IS", 102, "More industrial", null);
+        var course2 = new Course("ISE", 102, "More industrial", null);
         var course3 = new Course("CS", 202, "Magical Turing Machine", null);
-        DBUtil.insert(course);
+        // DBUtil.insert(course);
         DBUtil.insert(course2);
-        DBUtil.insert(course3);
+        // DBUtil.insert(course3);
     }
 
     @Test
