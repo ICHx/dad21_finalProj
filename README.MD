@@ -11,6 +11,8 @@ client: Vue3, server: JDK11 Javalin REST service
 
 # Hosted Instance
 
+Rollbacked everyday.
+
 ## URL:
 http://gcp-wormfeed.duckdns.org:8002/
 
